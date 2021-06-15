@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       //hasOne
       Shipping.hasOne(Address,{
-        foreignKey:'address_id'
+        foreignKey:'address_id',
+        as:'addresses'
       })
       // belongsToOne
       Shipping.belongsTo(Order)

@@ -35,6 +35,13 @@ module.exports = {
           key: 'id'
         }
       },
+      state_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'states',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

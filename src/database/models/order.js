@@ -12,13 +12,21 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       //hasOne
       Order.hasOne(Shipping,{
-        foreignKey:'shipping_id'
+        foreignKey:'shipping_id',
+        as:'shippings'
       });
       Order.hasOne(Payment,{
-        foreignKey:'payment_id'
+        foreignKey:'payment_id',
+        as:'payments'
+      });
+      Order.hasOne(State,{
+        foreignKey:'state_id',
+        as:'states'
       });
       //belongsToOne
-      Order.belongsTo(User,{foreignKey:'user_id'});
+      Order.belongsTo(User,{
+        foreignKey:'user_id'
+      });
       // hasMany
       Order.hasMany(OrderDetail, {
         foreignKey: 'order_id',
@@ -33,7 +41,8 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATE,
     user_id: DataTypes.INTEGER,
     payment_id: DataTypes.INTEGER,
-    shipping_id: DataTypes.INTEGER
+    shipping_id: DataTypes.INTEGER,
+    state_id:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Order',

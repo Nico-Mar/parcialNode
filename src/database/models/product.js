@@ -13,12 +13,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // belongsTo
-      Product.belongsTo(Brand);
-      Product.belongsTo(Category);
-      Product.belongsTo(Size);
-      Product.belongsTo(Gender);
-      Product.belongsTo(Image);
-      Product.belongsTo(OrderDetail);
+      Product.belongsTo(Brand,{
+        foreignKey:'brand_id'
+      });
+      Product.belongsTo(Category,{
+        foreignKey:'category_id'
+      });
+      Product.belongsTo(Size,{
+        foreignKey:'size_id'
+      });
+      Product.belongsTo(Gender,{
+        foreignKey:'gender_id'
+      });
+      Product.belongsTo(Image,{
+        foreignKey:'image_id'
+      });
+      Product.belongsTo(OrderDetail,{
+        foreignKey:'product_id'
+      });
     }
   }
   Product.init({

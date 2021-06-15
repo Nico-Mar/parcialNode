@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // belongsToOne
-      Address.belongsTo(State,{
-        foreignKey:state_id
+      Address.belongsTo(Province,{
+        foreignKey:'province_id'
       });
       Address.belongsTo(User,{
         foreignKey:'address_id'

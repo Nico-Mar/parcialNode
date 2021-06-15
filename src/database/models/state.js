@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const order = require('./order');
 module.exports = (sequelize, DataTypes) => {
   class State extends Model {
     /**
@@ -10,10 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // hasMany
-      State.hasMany(Address,{
-        foreignKey='state_id',
-        as='addresses'})
+      // belongsTo
+      State.belongsTo(Order)
     }
   }
   State.init({
